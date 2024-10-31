@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="bd800d42-9506-486f-96fc-559924533b25" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonSever/audio_output/youtube_audio/accompaniment.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonSever/audio_output/youtube_audio/vocals.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonSever/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/PythonSever/server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonSever/vocal_onset_times.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PythonSever/results/audio_output/youtube_audio/accompaniment.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PythonSever/results/audio_output/youtube_audio/vocals.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PythonSever/results/vocal_onset_times.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PythonSever/results/youtube_audio.mp3" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,14 +26,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -50,7 +56,7 @@
       <updated>1730331629720</updated>
       <workItem from="1730331631145" duration="3000" />
       <workItem from="1730333408830" duration="4000" />
-      <workItem from="1730333493034" duration="290000" />
+      <workItem from="1730333493034" duration="704000" />
     </task>
     <servers />
   </component>

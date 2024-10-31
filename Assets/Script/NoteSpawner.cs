@@ -1,25 +1,43 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class NoteSpawner : MonoBehaviour
 {
-    public GameObject notePrefab;  // 노트 프리팹
-    public Transform[] spawnPositions;  // Q, W, E, R 바의 위치
-    public float yOffset = 10f;  // y축 오프셋 (인스펙터에서 조정 가능)
-    public float noteTravelTime = 2f;  // 노트가 목적지까지 도달하는 데 걸리는 시간
+    public GameObject notePrefab;
+    public Transform[] spawnPositions;
+    public float yOffset = 10f;
+    public float noteTravelTime = 2f;
+    public AudioSource audioSource;
 
-    private List<(int, float)> noteData;  // 바 번호와 타이밍 정보를 저장할 리스트
+    private List<(int, float)> noteData;
     private int currentNoteIndex = 0;
     private float timeElapsed = 0f;
-    private bool isSpawningActive = false;  // 노트 스포닝 활성화 여부
+    private bool isSpawningActive = false;
+    private float loadingCompleteTime; // 로딩 완료 시간 저장
 
     void Start()
     {
-        // 노트 데이터 로드
-        noteData = new List<(int, float)>();
+        StartCoroutine(LoadDataAndAudio());
+    }
 
-        string[] lines = File.ReadAllLines(Application.dataPath + "/Resources/note_data.txt");
+    IEnumerator LoadDataAndAudio()
+    {
+        string projectRootPath = Directory.GetParent(Application.dataPath).FullName;
+        string resultsFolderPath = Path.Combine(projectRootPath, "PythonServer", "results");
+        string noteDataPath = Path.Combine(resultsFolderPath, "vocal_onset_times.txt");
+        string audioFilePath = Path.Combine(resultsFolderPath, "youtube_audio.mp3");
+
+        if (!File.Exists(noteDataPath))
+        {
+            Debug.LogWarning($"Note data file not found at path: {noteDataPath}");
+            yield break;
+        }
+
+        noteData = new List<(int, float)>();
+        string[] lines = File.ReadAllLines(noteDataPath);
         foreach (string line in lines)
         {
             var splitLine = line.Split(',');
@@ -27,55 +45,83 @@ public class NoteSpawner : MonoBehaviour
             float timing = float.Parse(splitLine[1]);
             noteData.Add((bar, timing));
         }
+
+        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip("file://" + audioFilePath, AudioType.MPEG))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                AudioClip clip = DownloadHandlerAudioClip.GetContent(www);
+                audioSource.clip = clip;
+            }
+            else
+            {
+                Debug.LogError("Audio file loading failed: " + www.error);
+                yield break;
+            }
+        }
+
+        loadingCompleteTime = Time.time;
+        Debug.Log("Loading complete. Time elapsed since start: " + loadingCompleteTime);
+
+        StartSpawningAndPlayAudio();
+    }
+
+    void StartSpawningAndPlayAudio()
+    {
+        isSpawningActive = true;
+        audioSource.Play();
+        
+        // 로딩 완료 이후부터 카운트를 시작하기 위해 timeElapsed 초기화
+        timeElapsed = 0f;
+        loadingCompleteTime = Time.time;
+
+        Debug.Log("Audio started after " + (Time.time - loadingCompleteTime) + " seconds from loading completion.");
+        currentNoteIndex = 0;
     }
 
     void Update()
     {
-        // 스페이스 바가 눌리면 노트 스포닝 시작
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            isSpawningActive = true;
-            timeElapsed = 0f;  // 타이머 리셋
-            currentNoteIndex = 0;  // 노트 인덱스 리셋
-        }
+        if (!isSpawningActive) return; // 로딩 완료 후에만 Update 실행
 
-        // 노트 스포닝이 활성화된 경우에만 실행
-        if (isSpawningActive)
-        {
-            timeElapsed += Time.deltaTime;
+        timeElapsed += Time.deltaTime;
+        Debug.Log(timeElapsed);
 
-            // 타이밍에 맞춰 노트 생성
-            if (currentNoteIndex < noteData.Count)
+        if (currentNoteIndex < noteData.Count)
+        {
+            float targetTime = noteData[currentNoteIndex].Item2;
+            float spawnTime = targetTime - noteTravelTime;
+
+            if (timeElapsed - 0.8 >= spawnTime)
             {
-                float targetTime = noteData[currentNoteIndex].Item2;
-                float spawnTime = targetTime - noteTravelTime;
+                int bar = noteData[currentNoteIndex].Item1;
+                GenerateNote(bar - 1);
 
-                if (timeElapsed >= spawnTime)
+                if (currentNoteIndex == 0)
                 {
-                    int bar = noteData[currentNoteIndex].Item1;
-                    GenerateNote(bar - 1);
-                    currentNoteIndex++;
+                    float firstNoteTime = Time.time - loadingCompleteTime;
+                    Debug.Log("First note spawned after " + firstNoteTime + " seconds from loading completion.");
                 }
+
+                currentNoteIndex++;
             }
         }
     }
 
     void GenerateNote(int barIndex)
     {
-        // 지정된 바의 위치에서 y축으로 yOffset만큼 위에 노트 생성
         Vector3 spawnPosition = spawnPositions[barIndex].position + new Vector3(0, yOffset, 0);
         Vector3 targetPosition = spawnPositions[barIndex].position;
+
+        Debug.Log($"Spawn Position: {spawnPosition}, Target Position: {targetPosition}");
+
         GameObject note = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
 
-        // 이동 거리 계산
         float distance = Vector3.Distance(spawnPosition, targetPosition);
-
-        // 이동 속도 계산 (거리 / 시간)
         float speed = distance / noteTravelTime;
 
-        // 노트에 속도를 설정하여 바까지 이동하게 함
         NoteMovement noteMovement = note.GetComponent<NoteMovement>();
         noteMovement.SetTarget(targetPosition, speed);
-        Debug.Log(speed);
     }
 }

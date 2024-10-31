@@ -111,6 +111,7 @@ public class YouTubeSearch : MonoBehaviour
         
         // PlayerPrefs에 URL 저장
         PlayerPrefs.SetString("YouTubeVideoUrl", videoUrl);
+        Debug.Log(videoUrl);
 
         // 다음 씬으로 이동
         SceneManager.LoadScene("APIScene"); // 다음 씬 이름을 "NextScene"으로 가정

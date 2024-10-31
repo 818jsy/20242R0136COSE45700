@@ -73,3 +73,5 @@ crashlytics-build.properties
 
 # PythonServer의 results 폴더 무시
 /PythonServer/results/
+
+/Build

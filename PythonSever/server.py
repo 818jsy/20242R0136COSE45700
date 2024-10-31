@@ -8,8 +8,8 @@ from spleeter.separator import Separator
 app = Flask(__name__)
 
 # 유튜브 오디오 다운로드 함수
-def download_audio_yt_dlp(url):
-    audio_file = "youtube_audio.mp3"
+def download_audio_ytdlp(url, output_path):
+    audio_file = os.path.join(output_path, "youtube_audio.mp3")
     result = subprocess.run(
         ["yt-dlp", "-f", "bestaudio", "--extract-audio", "--audio-format", "mp3", "-o", audio_file, url],
         capture_output=True,
@@ -21,14 +21,18 @@ def download_audio_yt_dlp(url):
 
 # 음성 분리 및 온셋 탐지 함수
 def process_audio(youtube_url):
+    # 결과 폴더 설정
+    results_folder = './results'
+    os.makedirs(results_folder, exist_ok=True)  # 결과 폴더 생성
+
     # 1. 오디오 다운로드
-    audio_path = download_audio_yt_dlp(youtube_url)
+    audio_path = download_audio_ytdlp(youtube_url, results_folder)
     if not os.path.exists(audio_path):
         raise FileNotFoundError("Audio file not found after download.")
 
     # 2. Spleeter를 사용한 음성 분리
-    separator = Separator('spleeter:2stems')
-    output_path = './audio_output'
+    separator = Separator('spleeter:2stems', multiprocess=False)
+    output_path = os.path.join(results_folder, 'audio_output')
     separator.separate_to_file(audio_path, output_path)
 
     # 분리된 음성 파일의 경로
@@ -42,7 +46,7 @@ def process_audio(youtube_url):
     onset_times = librosa.frames_to_time(onset_frames, sr=sr)
 
     # 4. 결과를 텍스트 파일로 저장
-    output_file = "vocal_onset_times.txt"
+    output_file = os.path.join(results_folder, "vocal_onset_times.txt")
     with open(output_file, "w") as f:
         for onset_time in onset_times:
             f.write(f"{onset_time:.2f}\n")
@@ -63,3 +67,4 @@ def process_youtube():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
+

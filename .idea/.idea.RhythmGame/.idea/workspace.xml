@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11459b6a-908c-4d05-a48c-e30febb08933" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Nebula Skyboxes/Nebula_01_Cubemap.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Nebula Skyboxes/Nebula_01_Cubemap.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/APIScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/APIScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/NoteSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/NoteSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/YouTubeSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/YouTubeSearch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonServer/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/PythonServer/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunInfo.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunInfo.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunSettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunSettings.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/BurstAotSettings_StandaloneWindows.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/BurstAotSettings_StandaloneWindows.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/CommonBurstAotSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/CommonBurstAotSettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +52,14 @@
   }
 }]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Build\Rhythmgame3D.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="D:\Development\KUCC\RhythmGame\Build" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="D:\Program Files\Unity\Hub\Editor\6000.0.24f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath D:\Development\KUCC\RhythmGame -debugCodeOptimization" />
@@ -98,7 +106,7 @@
       <option name="presentableId" value="Default" />
       <updated>1730334468621</updated>
       <workItem from="1730334472179" duration="162000" />
-      <workItem from="1730334666107" duration="5064000" />
+      <workItem from="1730334666107" duration="5843000" />
     </task>
     <servers />
   </component>

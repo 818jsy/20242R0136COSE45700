@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd800d42-9506-486f-96fc-559924533b25" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.RhythmGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RhythmGame/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Nebula Skyboxes/Nebula_01_Cubemap.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Nebula Skyboxes/Nebula_01_Cubemap.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/APIScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/APIScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/NoteSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/NoteSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/YouTubeSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/YouTubeSearch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonServer/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/PythonServer/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunInfo.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunInfo.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunSettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunSettings.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/BurstAotSettings_StandaloneWindows.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/BurstAotSettings_StandaloneWindows.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/CommonBurstAotSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/CommonBurstAotSettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +61,8 @@
       <workItem from="1730331631145" duration="3000" />
       <workItem from="1730333408830" duration="4000" />
       <workItem from="1730333493034" duration="704000" />
-      <workItem from="1730335164304" duration="3238000" />
+      <workItem from="1730335164304" duration="3902000" />
+      <workItem from="1730355750377" duration="1494000" />
     </task>
     <servers />
   </component>

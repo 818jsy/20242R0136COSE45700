@@ -1159,7 +1159,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b,
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1194,7 +1194,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -22.72, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4.91, y: 0.62, z: 2.06}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1474,9 +1474,11 @@ MonoBehaviour:
   - {fileID: 1449198021}
   - {fileID: 665469615}
   - {fileID: 1875537550}
-  yOffset: 10
+  yOffset: 40
   noteTravelTime: 2
   audioSource: {fileID: 1420792065}
+  noteDataTextAsset: {fileID: 4900000, guid: cf76244e0ed5cbb4da88f30f1f126cb3, type: 3}
+  audioClip: {fileID: 8300000, guid: 037a8cb577dc85a4e8b74c0461593bca, type: 3}
 --- !u!4 &1420792064
 Transform:
   m_ObjectHideFlags: 0

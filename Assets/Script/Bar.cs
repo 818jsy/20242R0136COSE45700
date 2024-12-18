@@ -31,12 +31,12 @@ public class Bar : MonoBehaviour
             float n = distanceThreshold;
 
             // 거리 범위에 따라 Bar의 색상 변경 및 노트의 색상 변경
-            if (distance > n / 2 && distance <= n)
+            if (distance > n  && distance <= n * 1.5f)
             {
                 StartCoroutine(ChangeMaterialTemporarily(yellowMaterial)); // Bar를 yellowMaterial로 0.2초간 변경
                 ChangeNoteMaterial(noteYellowMaterial); // 노트의 Material을 노란색으로 변경
             }
-            else if (distance > 0 && distance <= n / 2)
+            else if (distance > 0 && distance <= n )
             {
                 StartCoroutine(ChangeMaterialTemporarily(greenMaterial)); // Bar를 greenMaterial로 0.2초간 변경
                 ChangeNoteMaterial(noteGreenMaterial); // 노트의 Material을 초록색으로 변경

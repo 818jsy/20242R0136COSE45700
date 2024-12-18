@@ -11,20 +11,29 @@ public class YouTubeAudioRequester : MonoBehaviour
 {
     public string serverUrl = "http://127.0.0.1:5000/process-youtube"; // Flask 서버 URL
     public TextMeshProUGUI logText; // 로그 출력을 위한 TextMeshProUGUI
+    public bool isTest = false; // 인스펙터에서 체크할 수 있는 테스트 변수
 
     void Start()
     {
-        // PlayerPrefs에서 URL 불러오기
-        string videoUrl = PlayerPrefs.GetString("YouTubeVideoUrl", "");
-        if (!string.IsNullOrEmpty(videoUrl) && videoUrl != "URL이 없습니다.")
+        if (isTest)
         {
-            Debug.Log($"URL found in PlayerPrefs: {videoUrl}");
-            StartCoroutine(SendRequestToServer(videoUrl)); // URL이 있으면 자동으로 서버 요청 시작
+            // 테스트 모드일 경우 5초 후 씬 전환
+            StartCoroutine(TransitionToSceneAfterDelay(5f));
         }
         else
         {
-            Debug.Log("No URL found in PlayerPrefs.");
-            logText.text = "No URL found in PlayerPrefs.";
+            // PlayerPrefs에서 URL 불러오기
+            string videoUrl = PlayerPrefs.GetString("YouTubeVideoUrl", "");
+            if (!string.IsNullOrEmpty(videoUrl) && videoUrl != "URL이 없습니다.")
+            {
+                Debug.Log($"URL found in PlayerPrefs: {videoUrl}");
+                StartCoroutine(SendRequestToServer(videoUrl)); // URL이 있으면 자동으로 서버 요청 시작
+            }
+            else
+            {
+                Debug.Log("No URL found in PlayerPrefs.");
+                logText.text = "No URL found in PlayerPrefs.";
+            }
         }
     }
 
@@ -70,5 +79,12 @@ public class YouTubeAudioRequester : MonoBehaviour
             // 모든 요청이 완료된 후 SampleScene으로 씬 전환
             SceneManager.LoadScene("SampleScene");
         }
+    }
+
+    // 5초 후에 씬 전환하는 코루틴
+    IEnumerator TransitionToSceneAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene("SampleScene");
     }
 }

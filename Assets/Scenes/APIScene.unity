@@ -287,6 +287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serverUrl: http://127.0.0.1:5000/process-youtube
   logText: {fileID: 50844944}
+  isTest: 1
 --- !u!4 &595636337
 Transform:
   m_ObjectHideFlags: 0
